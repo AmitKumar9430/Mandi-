@@ -1,0 +1,25 @@
+package com.mandi.problem;
+
+public enum ProblemStatus {
+    NEW,
+    SUBMITTED,
+    DRAFT,
+    UNDER_REVIEW,
+    VERIFIED,
+    MATCHING,
+    SOLUTION_FOUND,
+    AWAITING_USER,
+    ASSIGNED,
+    ACCEPTED,
+    IN_PROGRESS,
+    WAITING,
+    RESOLVED,
+    VERIFICATION_PENDING,
+    COMPLETED,
+    CLOSED,
+    REOPENED,
+    OVERDUE,
+    ESCALATED,
+    CANCELLED,
+    REJECTED
+}

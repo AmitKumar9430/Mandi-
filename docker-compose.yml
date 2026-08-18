@@ -1,0 +1,65 @@
+version: '3.8'
+
+services:
+  # ============================================================================
+  # MySQL Database Service
+  # ============================================================================
+  mysql:
+    image: mysql:8.0
+    container_name: mandi-mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: mandidb
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_USER: mandi_user
+      MYSQL_PASSWORD: mandi_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-prootpassword"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  # ============================================================================
+  # Spring Boot Backend Service
+  # ============================================================================
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: mandi-backend
+    restart: always
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      PORT: 8080
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/mandidb?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: mandi_user
+      SPRING_DATASOURCE_PASSWORD: mandi_password
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      MANDI_CORS_ALLOWED_ORIGINS: "http://localhost:5173,http://localhost:3000,http://localhost:80,http://localhost"
+    ports:
+      - "8080:8080"
+
+  # ============================================================================
+  # React Frontend Service
+  # ============================================================================
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: mandi-frontend
+    restart: always
+    depends_on:
+      - backend
+    environment:
+      VITE_API_URL: http://localhost:8080/api
+    ports:
+      - "3000:80"
+
+volumes:
+  mysql_data:

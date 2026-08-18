@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-stone-50 text-stone-900;
+    font-family: 'Hind', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  /* Accessibility High Contrast Focus Rings */
+  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+    @apply outline-none ring-4 ring-pine-500 ring-offset-2;
+  }
+}
+
+/* Natural Rural Hero Background - Clean Scenic Visibility without heavy color washes */
+.bg-rural-hero {
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.35), rgba(15, 23, 42, 0.70)), url('/rural_village_landscape.jpg');
+  background-size: cover;
+  background-position: center 30%;
+}
+
+.bg-rural-card {
+  background-image: radial-gradient(circle at 100% 100%, rgba(45, 122, 88, 0.1) 0%, transparent 60%);
+}
+
+.bg-kisan-banner {
+  background-image: linear-gradient(135deg, rgba(20, 61, 44, 0.94), rgba(10, 29, 22, 0.96)), url('/rural_village_landscape.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f0f7f3;
+}
+::-webkit-scrollbar-thumb {
+  background: #2d7a58;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #1c4f39;
+}
+
+/* Leaflet map custom height fix */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  z-index: 10;
+}
+
+/* Live Marquee Ticker Animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: marquee 32s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}

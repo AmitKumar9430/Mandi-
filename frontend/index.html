@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="hi">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23cb822b'><circle cx='12' cy='12' r='10'/><path d='M12 6v6l4 2' stroke='white' stroke-width='2'/></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>मंडी (MANDI) — समस्या बताओ, मंडी समाधान तक ले जाएगा।</title>
+    <meta name="description" content="AI-assisted community problem-resolution platform for farmers, workers, elderly, and rural citizens." />
+    <!-- Google Fonts: Hind (Devanagari) & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  </head>
+  <body class="bg-amber-50/40 text-stone-900 antialiased selection:bg-mandi-500 selection:text-white font-sans min-h-screen">
+    <div id="root">
+      <div style="min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: system-ui, sans-serif; background: #0c1813; color: #ecfdf5; padding: 20px; text-align: center;">
+        <div style="width: 56px; height: 56px; border-radius: 16px; background: #059669; display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 900; margin-bottom: 16px; border: 2px solid #34d399; box-shadow: 0 10px 25px rgba(5, 150, 105, 0.4);">
+          म
+        </div>
+        <h1 style="font-size: 24px; font-weight: 900; margin: 0 0 8px 0; color: #ffffff;">मंडी (MANDI) लोड हो रहा है...</h1>
+        <p style="font-size: 13px; color: #a7f3d0; margin: 0 0 20px 0; max-width: 400px;">
+          "समस्या बताओ। मंडी समाधान तक ले जाएगा।" • Starting Application
+        </p>
+        <div style="width: 36px; height: 36px; border: 3px solid rgba(52, 211, 153, 0.2); border-top-color: #34d399; border-radius: 50%; animation: spin 0.8s linear infinite;"></div>
+        <style>
+          @keyframes spin { to { transform: rotate(360deg); } }
+        </style>
+      </div>
+    </div>
+    <script>
+      window.addEventListener('error', function(e) {
+        var errBox = document.getElementById('debug-err-box');
+        if (!errBox) {
+          errBox = document.createElement('div');
+          errBox.id = 'debug-err-box';
+          errBox.style = 'position:fixed;top:0;left:0;right:0;bottom:0;background:#18181b;color:#f87171;padding:24px;font-family:monospace;z-index:999999;overflow:auto;';
+          document.body.appendChild(errBox);
+        }
+        errBox.innerHTML = '<h2 style="color:#ef4444;font-size:20px;margin-top:0;">🚨 JavaScript Execution Error</h2>' +
+          '<p style="color:#ffffff;font-size:14px;font-weight:bold;">' + (e.message || 'Script execution failed') + '</p>' +
+          '<p style="color:#a1a1aa;font-size:12px;">' + (e.filename || '') + ':' + (e.lineno || '') + ':' + (e.colno || '') + '</p>' +
+          '<pre style="background:#27272a;padding:12px;border-radius:8px;color:#e4e4e7;white-space:pre-wrap;font-size:12px;">' + (e.error ? (e.error.stack || e.error.toString()) : '') + '</pre>' +
+          '<div style="margin-top:16px;"><button onclick="localStorage.clear();sessionStorage.clear();location.href=\'/user/login\';" style="background:#10b981;color:#052e16;padding:10px 20px;border-radius:8px;font-weight:bold;border:none;cursor:pointer;">Clear Local Storage & Reload</button></div>';
+      });
+      window.addEventListener('unhandledrejection', function(e) {
+        var errBox = document.getElementById('debug-err-box');
+        if (!errBox) {
+          errBox = document.createElement('div');
+          errBox.id = 'debug-err-box';
+          errBox.style = 'position:fixed;top:0;left:0;right:0;bottom:0;background:#18181b;color:#f87171;padding:24px;font-family:monospace;z-index:999999;overflow:auto;';
+          document.body.appendChild(errBox);
+        }
+        errBox.innerHTML = '<h2 style="color:#ef4444;font-size:20px;margin-top:0;">🚨 Unhandled Promise Rejection</h2>' +
+          '<p style="color:#ffffff;font-size:14px;font-weight:bold;">' + (e.reason ? (e.reason.message || e.reason.toString()) : 'Unhandled Rejection') + '</p>' +
+          '<pre style="background:#27272a;padding:12px;border-radius:8px;color:#e4e4e7;white-space:pre-wrap;font-size:12px;">' + (e.reason && e.reason.stack ? e.reason.stack : '') + '</pre>' +
+          '<div style="margin-top:16px;"><button onclick="localStorage.clear();sessionStorage.clear();location.href=\'/user/login\';" style="background:#10b981;color:#052e16;padding:10px 20px;border-radius:8px;font-weight:bold;border:none;cursor:pointer;">Clear Local Storage & Reload</button></div>';
+      });
+    </script>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

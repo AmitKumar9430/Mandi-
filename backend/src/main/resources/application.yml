@@ -1,0 +1,95 @@
+server:
+  port: ${PORT:8080}
+  servlet:
+    context-path: /
+
+spring:
+  application:
+    name: mandi-backend
+
+  # ============================================================
+  # MYSQL DATABASE
+  # ============================================================
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:}
+    username: ${SPRING_DATASOURCE_USERNAME:}
+    password: ${SPRING_DATASOURCE_PASSWORD:}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  # ============================================================
+  # JPA / HIBERNATE
+  # ============================================================
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: ${SPRING_JPA_HIBERNATE_DDL_AUTO:update}
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+
+  # ============================================================
+  # JACKSON
+  # ============================================================
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+      FAIL_ON_EMPTY_BEANS: false
+    time-zone: UTC
+
+  # ============================================================
+  # FILE UPLOAD
+  # ============================================================
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+
+# ==============================================================
+# MANDI APPLICATION CONFIGURATION
+# ==============================================================
+mandi:
+
+  # ============================================================
+  # JWT
+  # ============================================================
+  jwt:
+    secret: ${JWT_SECRET:}
+    expiration-ms: 86400000
+
+  # ============================================================
+  # CORS
+  # ============================================================
+  cors:
+    allowed-origins: ${MANDI_CORS_ALLOWED_ORIGINS:http://localhost:5173,http://localhost:3000,http://127.0.0.1:5173}
+
+  # ============================================================
+  # SEED DATA
+  # ============================================================
+  seed-data:
+    enabled: true
+
+  # ============================================================
+  # OPENAI & AI ASSISTANT CONFIGURATION
+  # ============================================================
+  openai:
+    api-key: ${OPENAI_API_KEY:}
+
+  # ============================================================
+  # SMS & TELECOM GATEWAY CONFIGURATION
+  # ============================================================
+  sms:
+    enabled: true
+    fast2sms-api-key: ${FAST2SMS_API_KEY:}
+    msg91-auth-key: ${MSG91_AUTH_KEY:}
+
+  # ============================================================
+  # EMAILJS NOTIFICATION GATEWAY CONFIGURATION
+  # ============================================================
+  emailjs:
+    service-id: ${EMAILJS_SERVICE_ID:}
+    public-key: ${EMAILJS_PUBLIC_KEY:}
+    registration-template-id: ${EMAILJS_REGISTRATION_TEMPLATE_ID:}
+    login-template-id: ${EMAILJS_LOGIN_TEMPLATE_ID:}
+    private-key: ${EMAILJS_PRIVATE_KEY:}

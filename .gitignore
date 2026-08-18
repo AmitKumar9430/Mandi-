@@ -1,0 +1,73 @@
+# =========================
+# Environment / Secrets
+# =========================
+.env
+.env.*
+!.env.example
+
+# Frontend environment files
+frontend/.env
+frontend/.env.*
+!frontend/.env.example
+!frontend/.env.production.example
+
+# Backend environment files
+backend/.env
+backend/.env.*
+
+# =========================
+# Node / Frontend
+# =========================
+frontend/node_modules/
+frontend/dist/
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/pnpm-debug.log*
+
+# =========================
+# Java / Maven / Backend
+# =========================
+backend/target/
+backend/.mvn/
+*.class
+*.jar
+*.war
+*.ear
+
+# =========================
+# IDE & Editor
+# =========================
+.idea/
+.vscode/
+*.iml
+*.iws
+*.ipr
+.project
+.classpath
+.settings/
+
+# =========================
+# OS
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Logs
+# =========================
+*.log
+
+# =========================
+# Temporary files
+# =========================
+scratch/
+tmp/
+
+# =========================
+# Local secrets / certificates
+# =========================
+*.pem
+*.key
+*.p12
+*.jks

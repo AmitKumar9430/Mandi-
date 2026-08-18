@@ -1,0 +1,17 @@
+package com.mandi.resource;
+
+public enum ResourceCategory {
+    TRACTOR_EQUIPMENT,
+    TRANSPORT_VEHICLE,
+    STORAGE_FACILITY,
+    MEDICAL_EQUIPMENT,
+    EDUCATIONAL_MATERIAL,
+    COMMUNITY_HALL,
+    TOOL_KIT,
+    SKILLED_MANPOWER,
+    WATER_TANKER,
+    EMERGENCY_SUPPLY,
+    VOLUNTEER_TIME,
+    CROP_BUYER,
+    OTHER
+}
