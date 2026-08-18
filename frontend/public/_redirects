@@ -1,5 +1,5 @@
-# Netlify API proxy to Render backend
-/api/*  https://mandi-backend-j7g8.onrender.com/api/:splat  200
+# Netlify API proxy to Render backend (force rewrite)
+/api/*  https://mandi-backend-j7g8.onrender.com/api/:splat  200!
 
 # Netlify SPA fallback redirect for React Router
 /*    /index.html   200

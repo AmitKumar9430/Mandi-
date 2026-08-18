@@ -3,6 +3,16 @@ import axios from 'axios';
 
 const AdminAuthContext = createContext();
 
+const getBaseUrl = () => {
+  const envUrl = import.meta.env.VITE_API_URL;
+  if (envUrl) {
+    return envUrl.endsWith('/api') ? envUrl : `${envUrl.replace(/\/$/, '')}/api`;
+  }
+  return 'https://mandi-backend-j7g8.onrender.com/api';
+};
+
+const API_BASE = getBaseUrl();
+
 export const AdminAuthProvider = ({ children }) => {
   const [adminUser, setAdminUser] = useState(() => {
     try {
@@ -42,7 +52,7 @@ export const AdminAuthProvider = ({ children }) => {
   const requestAdminOtp = async (identifier) => {
     setLoading(true);
     try {
-      const res = await axios.post('/api/auth/admin-login/request-otp', {
+      const res = await axios.post(`${API_BASE}/auth/admin-login/request-otp`, {
         identifier
       });
       if (res.data?.success && res.data?.data) {
@@ -60,7 +70,7 @@ export const AdminAuthProvider = ({ children }) => {
   const verifyAdminOtp = async (otpRequestId, otp) => {
     setLoading(true);
     try {
-      const res = await axios.post('/api/auth/admin-login/verify-otp', {
+      const res = await axios.post(`${API_BASE}/auth/admin-login/verify-otp`, {
         otpRequestId,
         otp
       });
@@ -92,7 +102,7 @@ export const AdminAuthProvider = ({ children }) => {
   const loginAdmin = async (identifier, password) => {
     setLoading(true);
     try {
-      const res = await axios.post('/api/auth/admin-login', {
+      const res = await axios.post(`${API_BASE}/auth/admin-login`, {
         identifier,
         password
       });

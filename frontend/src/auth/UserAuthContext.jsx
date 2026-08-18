@@ -3,6 +3,16 @@ import axios from 'axios';
 
 const UserAuthContext = createContext();
 
+const getBaseUrl = () => {
+  const envUrl = import.meta.env.VITE_API_URL;
+  if (envUrl) {
+    return envUrl.endsWith('/api') ? envUrl : `${envUrl.replace(/\/$/, '')}/api`;
+  }
+  return 'https://mandi-backend-j7g8.onrender.com/api';
+};
+
+const API_BASE = getBaseUrl();
+
 const normalizeUser = (u) => {
   if (!u) return null;
   let roles = u.roles || ['ROLE_CITIZEN'];
@@ -55,7 +65,7 @@ export const UserAuthProvider = ({ children }) => {
   const requestOtp = async (identifier) => {
     setLoading(true);
     try {
-      const res = await axios.post('/api/auth/login/request-otp', { identifier });
+      const res = await axios.post(`${API_BASE}/auth/login/request-otp`, { identifier });
       if (res.data?.success && res.data?.data) {
         return res.data.data;
       }
@@ -71,7 +81,7 @@ export const UserAuthProvider = ({ children }) => {
   const verifyOtp = async (otpRequestId, otp) => {
     setLoading(true);
     try {
-      const res = await axios.post('/api/auth/login/verify-otp', { otpRequestId, otp });
+      const res = await axios.post(`${API_BASE}/auth/login/verify-otp`, { otpRequestId, otp });
       if (res.data?.success && res.data?.data) {
         const d = res.data.data;
         const u = {
@@ -104,7 +114,7 @@ export const UserAuthProvider = ({ children }) => {
   const verifyOtpLogin = async (identifier, otp) => {
     setLoading(true);
     try {
-      const res = await axios.post('/api/auth/verify-otp-login', { identifier, otp });
+      const res = await axios.post(`${API_BASE}/auth/verify-otp-login`, { identifier, otp });
       if (res.data?.success && res.data?.data) {
         const d = res.data.data;
         const u = {
@@ -133,7 +143,7 @@ export const UserAuthProvider = ({ children }) => {
   const login = async (identifier, password) => {
     setLoading(true);
     try {
-      const res = await axios.post('/api/auth/user-login', { identifier, password });
+      const res = await axios.post(`${API_BASE}/auth/login`, { identifier, password });
       if (res.data?.success && res.data?.data) {
         const d = res.data.data;
         const u = {
@@ -162,7 +172,7 @@ export const UserAuthProvider = ({ children }) => {
   const requestRegisterOtp = async (registerData) => {
     setLoading(true);
     try {
-      const res = await axios.post('/api/auth/register/request-otp', registerData);
+      const res = await axios.post(`${API_BASE}/auth/register/request-otp`, registerData);
       if (res.data?.success && res.data?.data) {
         return res.data.data;
       }
@@ -178,7 +188,7 @@ export const UserAuthProvider = ({ children }) => {
   const verifyRegisterOtp = async (otpRequestId, otp) => {
     setLoading(true);
     try {
-      const res = await axios.post('/api/auth/register/verify-otp', { otpRequestId, otp });
+      const res = await axios.post(`${API_BASE}/auth/register/verify-otp`, { otpRequestId, otp });
       if (res.data?.success && res.data?.data) {
         const d = res.data.data;
         const u = {
@@ -207,7 +217,7 @@ export const UserAuthProvider = ({ children }) => {
   const register = async (registerData) => {
     setLoading(true);
     try {
-      const res = await axios.post('/api/auth/register', registerData);
+      const res = await axios.post(`${API_BASE}/auth/register`, registerData);
       if (res.data?.success && res.data?.data) {
         const d = res.data.data;
         const u = {

@@ -5,6 +5,13 @@
 
 [build.environment]
   NODE_VERSION = "20"
+  VITE_API_URL = "https://mandi-backend-j7g8.onrender.com/api"
+
+[[redirects]]
+  from = "/api/*"
+  to = "https://mandi-backend-j7g8.onrender.com/api/:splat"
+  status = 200
+  force = true
 
 [[redirects]]
   from = "/*"

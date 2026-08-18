@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import { userCivicApi } from '../../../shared/api/userApi';
 import ImageModalViewer from '../../../components/ImageModalViewer';
 import { AlertOctagon, ThumbsUp, MapPin, Loader2, CheckCircle2, ZoomIn } from 'lucide-react';
 
@@ -11,8 +11,9 @@ export default function AdminReportsManagement() {
   const fetchReports = async () => {
     setLoading(true);
     try {
-      const res = await axios.get('/api/civic');
-      if (res.data?.data?.content) setReports(res.data.data.content);
+      const res = await userCivicApi.getAll();
+      if (res.data?.content) setReports(res.data.content);
+      else if (Array.isArray(res.data)) setReports(res.data);
     } finally {
       setLoading(false);
     }

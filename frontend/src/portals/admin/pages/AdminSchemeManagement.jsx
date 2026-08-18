@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import { userSchemeApi } from '../../../shared/api/userApi';
 import { FileSpreadsheet, PlusCircle, ExternalLink, Trash2, Loader2 } from 'lucide-react';
 
 export default function AdminSchemeManagement() {
@@ -7,11 +7,11 @@ export default function AdminSchemeManagement() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get('/api/schemes').then(res => {
-      const data = res.data?.data;
+    userSchemeApi.search().then(res => {
+      const data = res.data;
       const list = data?.content || (Array.isArray(data) ? data : []);
       setSchemes(list);
-    }).finally(() => setLoading(false));
+    }).catch(() => setSchemes([])).finally(() => setLoading(false));
   }, []);
 
   return (
