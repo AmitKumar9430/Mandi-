@@ -9,8 +9,9 @@ export default defineConfig({
     port: 5173,
     proxy: {
       '/api': {
-        target: 'http://localhost:8080',
+        target: 'https://mandi-backend-j7g8.onrender.com',
         changeOrigin: true,
+        secure: false,
       }
     }
   }

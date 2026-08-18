@@ -5,7 +5,7 @@ const getBaseUrl = () => {
   if (envUrl) {
     return envUrl.endsWith('/api') ? envUrl : `${envUrl.replace(/\/$/, '')}/api`;
   }
-  return '/api';
+  return 'https://mandi-backend-j7g8.onrender.com/api';
 };
 
 const userClient = axios.create({
