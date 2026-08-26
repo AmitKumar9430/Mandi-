@@ -6,6 +6,9 @@ const getAdminBaseUrl = () => {
     const base = envUrl.endsWith('/api') ? envUrl : `${envUrl.replace(/\/$/, '')}/api`;
     return `${base}/admin`;
   }
+  if (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')) {
+    return 'http://localhost:8080/api/admin';
+  }
   return 'https://mandi-backend-j7g8.onrender.com/api/admin';
 };
 
