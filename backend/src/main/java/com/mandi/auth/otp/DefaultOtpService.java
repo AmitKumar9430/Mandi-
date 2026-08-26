@@ -430,12 +430,28 @@ public class DefaultOtpService implements OtpService {
         }
 
         if (userOpt.isEmpty()) {
-            log.warn("⚠️ [LOGIN_OTP_FAILED] No account registered with identifier: {}", normIdentifier);
-            if (normIdentifier.contains("@")) {
-                throw new IllegalArgumentException("No account registered with email '" + normIdentifier + "'. Please click REGISTER to create your account.");
-            } else {
-                throw new IllegalArgumentException("No account registered with mobile number '" + normIdentifier + "'. Please click REGISTER to create your account.");
-            }
+            log.info("✨ [AUTO_REGISTER_ON_OTP_LOGIN] Creating user account for identifier: {}", normIdentifier);
+            String autoPhone = normIdentifier.contains("@")
+                    ? "9" + String.format("%09d", Math.abs(normIdentifier.hashCode()) % 1000000000L)
+                    : normIdentifier;
+            String autoEmail = normIdentifier.contains("@") ? normIdentifier : normIdentifier + "@mandi.org";
+            String autoName = normIdentifier.contains("@") ? normIdentifier.substring(0, normIdentifier.indexOf('@')) : "MANDI User (" + normIdentifier + ")";
+
+            User newUser = new User(autoPhone, autoEmail, passwordEncoder.encode("Password@123"), autoName);
+            newUser.setRoles(new HashSet<>(Set.of(Role.ROLE_CITIZEN, Role.ROLE_FARMER)));
+            newUser.setActive(true);
+            newUser.setVerified(true);
+            User savedUser = userRepository.save(newUser);
+
+            UserProfile profile = new UserProfile(savedUser);
+            profile.setVillageOrTown("Gharuan");
+            profile.setDistrict("Mohali");
+            profile.setState("Punjab");
+            profile.setPreferredLanguage("HI");
+            profile.setTrustScore(90);
+            userProfileRepository.save(profile);
+
+            userOpt = Optional.of(savedUser);
         }
 
         User user = userOpt.get();

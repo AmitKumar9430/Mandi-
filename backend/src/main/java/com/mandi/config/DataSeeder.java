@@ -143,6 +143,31 @@ public class DataSeeder implements CommandLineRunner {
             log.error("Failed to seed Super Admin: {}", e.getMessage());
         }
 
+        // 0.1 Ensure user justabhiofficial724@gmail.com always exists
+        try {
+            String userEmail = "justabhiofficial724@gmail.com";
+            Optional<User> userOpt = userRepository.findByEmail(userEmail);
+            if (userOpt.isEmpty()) {
+                String encPass = passwordEncoder.encode("Password@123");
+                User mainUser = new User("9234042397", userEmail, encPass, "Abhishek (MANDI User)");
+                mainUser.setRoles(new java.util.HashSet<>(Set.of(Role.ROLE_ADMIN, Role.ROLE_SUPER_ADMIN, Role.ROLE_FARMER, Role.ROLE_CITIZEN)));
+                mainUser.setActive(true);
+                mainUser.setVerified(true);
+                User saved = userRepository.save(mainUser);
+
+                UserProfile profile = new UserProfile(saved);
+                profile.setVillageOrTown("Gharuan");
+                profile.setDistrict("Mohali");
+                profile.setState("Punjab");
+                profile.setPreferredLanguage("HI");
+                profile.setTrustScore(100);
+                profileRepository.save(profile);
+                log.info("👤 Primary User seeded: {}", userEmail);
+            }
+        } catch (Exception e) {
+            log.error("Failed to seed primary user: {}", e.getMessage());
+        }
+
         // Ensure Organizations are always seeded
         seedOrganizations();
 
