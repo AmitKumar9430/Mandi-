@@ -106,14 +106,14 @@ export default function UserBookings() {
         <div className="flex items-center gap-3">
           <button
             onClick={fetchBookings}
-            className="p-2.5 rounded-xl border border-slate-300 text-slate-600 hover:bg-slate-50 transition"
+            className="p-2.5 rounded-2xs border border-slate-300 text-slate-700 hover:bg-slate-50 transition"
             title="Refresh"
           >
             <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
           </button>
           <Link
             to="/user/problems/new"
-            className="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm shadow-lg shadow-emerald-600/30 transition flex items-center gap-2"
+            className="px-5 py-2.5 rounded-2xs bg-[#DC2626] hover:bg-[#B91C1C] text-white font-extrabold text-xs shadow-2xs transition flex items-center gap-2"
           >
             <Plus className="w-4 h-4" />
             New Service Request / नई मांग
@@ -125,28 +125,28 @@ export default function UserBookings() {
       <div className="flex items-center gap-2 border-b border-slate-200">
         <button
           onClick={() => setActiveTab('REQUESTS')}
-          className={`px-5 py-3 font-bold text-sm border-b-2 transition-all flex items-center gap-2 ${
+          className={`px-5 py-3 font-bold text-xs border-b-2 transition-all flex items-center gap-2 ${
             activeTab === 'REQUESTS'
-              ? 'border-emerald-600 text-emerald-700'
-              : 'border-transparent text-slate-500 hover:text-slate-800'
+              ? 'border-[#DC2626] text-[#DC2626] font-extrabold'
+              : 'border-transparent text-slate-600 hover:text-slate-900'
           }`}
         >
           <span>My Requested Services (मेरी मांगें)</span>
-          <span className="px-2 py-0.5 rounded-full text-xs font-extrabold bg-emerald-100 text-emerald-800">
+          <span className="px-2 py-0.5 rounded-2xs text-[10px] font-bold bg-red-100 text-[#DC2626]">
             {requests.length}
           </span>
         </button>
 
         <button
           onClick={() => setActiveTab('JOBS')}
-          className={`px-5 py-3 font-bold text-sm border-b-2 transition-all flex items-center gap-2 ${
+          className={`px-5 py-3 font-bold text-xs border-b-2 transition-all flex items-center gap-2 ${
             activeTab === 'JOBS'
-              ? 'border-emerald-600 text-emerald-700'
-              : 'border-transparent text-slate-500 hover:text-slate-800'
+              ? 'border-[#0A3663] text-[#0A3663] font-extrabold'
+              : 'border-transparent text-slate-600 hover:text-slate-900'
           }`}
         >
           <span>My Provider Bookings (प्राप्त कार्य)</span>
-          <span className="px-2 py-0.5 rounded-full text-xs font-extrabold bg-blue-100 text-blue-800">
+          <span className="px-2 py-0.5 rounded-2xs text-[10px] font-bold bg-blue-100 text-[#0A3663]">
             {jobs.length}
           </span>
         </button>

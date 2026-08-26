@@ -8,19 +8,18 @@ spring:
     name: mandi-backend
 
   # ============================================================
-  # MYSQL DATABASE
+  # DATABASE CONFIGURATION
   # ============================================================
   datasource:
-    url: ${SPRING_DATASOURCE_URL:}
-    username: ${SPRING_DATASOURCE_USERNAME:}
+    url: ${SPRING_DATASOURCE_URL:jdbc:h2:mem:mandidb;DB_CLOSE_DELAY=-1;MODE=MySQL}
+    username: ${SPRING_DATASOURCE_USERNAME:sa}
     password: ${SPRING_DATASOURCE_PASSWORD:}
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    driver-class-name: ${SPRING_DATASOURCE_DRIVER_CLASS_NAME:org.h2.Driver}
 
   # ============================================================
   # JPA / HIBERNATE
   # ============================================================
   jpa:
-    database-platform: org.hibernate.dialect.MySQLDialect
     hibernate:
       ddl-auto: ${SPRING_JPA_HIBERNATE_DDL_AUTO:update}
     show-sql: false
@@ -55,7 +54,7 @@ mandi:
   # JWT
   # ============================================================
   jwt:
-    secret: ${JWT_SECRET:}
+    secret: ${JWT_SECRET:404E635266556A586E3272357538782F413F4428472B4B6250655368566D597133743677397A24432646294A404D635166546A576E5A7234753778214125442A}
     expiration-ms: 86400000
 
   # ============================================================
@@ -88,8 +87,8 @@ mandi:
   # EMAILJS NOTIFICATION GATEWAY CONFIGURATION
   # ============================================================
   emailjs:
-    service-id: ${EMAILJS_SERVICE_ID:}
-    public-key: ${EMAILJS_PUBLIC_KEY:}
-    registration-template-id: ${EMAILJS_REGISTRATION_TEMPLATE_ID:}
-    login-template-id: ${EMAILJS_LOGIN_TEMPLATE_ID:}
-    private-key: ${EMAILJS_PRIVATE_KEY:}
+    service-id: ${EMAILJS_SERVICE_ID:service_9qysbj8}
+    public-key: ${EMAILJS_PUBLIC_KEY:mZNHwW-FUTEuLUHWu}
+    registration-template-id: ${EMAILJS_REGISTRATION_TEMPLATE_ID:template_kmzf1sl}
+    login-template-id: ${EMAILJS_LOGIN_TEMPLATE_ID:template_e25o3p8}
+    private-key: ${EMAILJS_PRIVATE_KEY:miSYTFDFm8kUATVBf57oa}

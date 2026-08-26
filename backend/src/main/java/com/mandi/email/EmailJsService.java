@@ -69,10 +69,18 @@ public class EmailJsService {
                 purpose, maskedEmail, templateId);
 
         try {
+            String cleanEmail = email.trim().toLowerCase();
             Map<String, String> templateParams = new HashMap<>();
-            templateParams.put("email", email.trim().toLowerCase());
+            templateParams.put("email", cleanEmail);
+            templateParams.put("to_email", cleanEmail);
+            templateParams.put("user_email", cleanEmail);
+            templateParams.put("recipient_email", cleanEmail);
             templateParams.put("name", safeName);
+            templateParams.put("to_name", safeName);
+            templateParams.put("user_name", safeName);
             templateParams.put("otp", otp);
+            templateParams.put("code", otp);
+            templateParams.put("passcode", otp);
             templateParams.put("time", "5 minutes");
 
             Map<String, Object> payload = new HashMap<>();
@@ -86,12 +94,12 @@ public class EmailJsService {
 
             String jsonPayload = objectMapper.writeValueAsString(payload);
 
+            log.info("📧 [EMAILJS DISPATCH] Transmitting {} OTP [{}] to email: {}", purpose, otp, cleanEmail);
+
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(URI.create(EMAILJS_API_URL))
                     .timeout(Duration.ofSeconds(15))
                     .header("Content-Type", "application/json")
-                    .header("Origin", "http://localhost:5173")
-                    .header("User-Agent", "MANDI-Application/1.0")
                     .POST(HttpRequest.BodyPublishers.ofString(jsonPayload))
                     .build();
 

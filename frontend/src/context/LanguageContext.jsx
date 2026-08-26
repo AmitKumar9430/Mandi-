@@ -4,126 +4,108 @@ const LanguageContext = createContext();
 
 export const translations = {
   hi: {
-    brand_tagline: 'समस्या बताओ, समाधान तक ले जाएगा।',
-    bolo_button: '🎤 बोलो अपनी प्रॉब्लम',
-    search_help: 'मदद खोजें...',
-    nearby_help: 'आस-पास की मदद',
-    my_problems: 'मेरी समस्याएँ',
-    categories: {
-      AGRICULTURE: 'कृषि एवं फसल (Kisan)',
-      HEALTHCARE: 'स्वास्थ्य एवं अस्पताल',
-      EDUCATION: 'शिक्षा एवं छात्र',
-      EMPLOYMENT: 'रोज़गार एवं कारीगर',
-      INFRASTRUCTURE: 'सड़क एवं बुनियादी ढाँचा',
-      WATER_SANITATION: 'पानी एवं स्वच्छता',
-      ELECTRICITY: 'बिजली एवं ट्रांसफार्मर',
-      EMERGENCY: 'आपातकालीन सहायता',
-      SOCIAL_WELFARE: 'सरकारी योजनाएं',
-      OTHER: 'अन्य सहायता'
-    },
+    brand_title: 'मंडी सेवा',
+    brand_sub: 'कृषि बाज़ार सूचना एवं सेवा पोर्टल',
+    disclaimer: 'डेमो / सॅम्पल - यह आधिकारिक सरकारी वेबसाइट नहीं है',
     nav: {
-      home: 'होम',
-      problems: 'समस्याएं (Feed)',
-      agriculture: 'किसान बाज़ार (Kisan Desk)',
-      jobs: 'रोज़गार व टाइम बैंक',
-      volunteer: 'मंडी सेवा (Volunteer)',
+      home: 'मुख्य पृष्ठ',
+      mandi_prices: 'मंडी भाव',
+      market_directory: 'मंडी निर्देशिका',
+      farmers: 'किसान पोर्टल',
+      traders: 'व्यापारी पोर्टल',
+      auctions: 'ई-नीलामी',
+      commodities: 'फसल एवं कृषि उत्पाद',
+      transport: 'परिवहन सेवा',
       schemes: 'सरकारी योजनाएं',
-      civic: 'गाँव की समस्या (Civic)',
-      map: 'नक्शा (Map)',
-      pulse: 'मंडी पल्स (Pulse)',
-      dashboard: 'डैशबोर्ड',
+      notices: 'सूचना पट्ट',
+      reports: 'बाज़ार रिपोर्ट',
+      grievance: 'शिकायत निवारण',
+      help: 'सहायता केंद्र',
       login: 'लॉग इन',
-      register: 'नया खाता',
-      logout: 'लॉग आउट'
-    },
-    hero: {
-      title_1: 'कोई भी समस्या हो,',
-      title_2: 'मंडी है आपके साथ।',
-      subtitle: 'फसल का खरीदार चाहिए, अस्पताल जाने के लिए गाड़ी, खराब हैंडपंप का सुधार या रोज़गार — बस बोलकर या लिखकर बताएं।',
-      input_placeholder: 'जैसे: "मेरे पास 50 क्विंटल गेहूँ है और खरीदार नहीं मिल रहा..." या "गाँव का हैंडपंप खराब है"',
-      recording: 'सुन रहे हैं... बोलिए',
-      voice_start: 'माइक दबाकर बोलें',
-      submit_problem: 'समाधान खोजें (Submit Problem)',
-      analyzing: 'मंडी AI समझ रहा है...',
-    },
-    passport: {
-      title: 'समस्या पासपोर्ट (Problem Passport)',
-      code: 'पासपोर्ट कोड',
-      solution_path: 'समाधान मार्ग (Solution Graph)',
-      assigned_resources: 'आवंटित संसाधन / मददगार',
-      urgency: 'प्राथमिकता',
-      status: 'स्थिति',
-      timeline: 'प्रगति समय-सारिणी (Timeline)',
-      confirm_resolution: 'समस्या हल हो गई (Confirm Resolution)',
-      rate_assistance: 'अनुभव रेटिंग दें'
+      register: 'पंजीकरण',
+      dashboard: 'डैशबोर्ड'
     }
   },
   en: {
-    brand_tagline: 'Describe Problem. MANDI Guides You To Solution.',
-    bolo_button: '🎤 Bolo Apni Problem',
-    search_help: 'Search help & resources...',
-    nearby_help: 'Nearby Help',
-    my_problems: 'My Problems',
-    categories: {
-      AGRICULTURE: 'Agriculture & Crops',
-      HEALTHCARE: 'Healthcare & Medical',
-      EDUCATION: 'Education & Students',
-      EMPLOYMENT: 'Jobs & Livelihood',
-      INFRASTRUCTURE: 'Roads & Infrastructure',
-      WATER_SANITATION: 'Water & Sanitation',
-      ELECTRICITY: 'Electricity & Power',
-      EMERGENCY: 'Emergency Aid',
-      SOCIAL_WELFARE: 'Government Welfare',
-      OTHER: 'General Community Help'
-    },
+    brand_title: 'MANDI SEWA',
+    brand_sub: 'Agricultural Market Information & Services Portal',
+    disclaimer: 'Demo / Prototype — Not an Official Government Website',
     nav: {
       home: 'Home',
-      problems: 'Problem Feed',
-      agriculture: 'Kisan Agri Desk',
-      jobs: 'Jobs & TimeBank',
-      volunteer: 'MANDI Seva',
-      schemes: 'Govt Schemes',
-      civic: 'Civic Issues',
-      map: 'Map Explorer',
-      pulse: 'MANDI Pulse',
-      dashboard: 'Dashboard',
-      login: 'Login',
+      mandi_prices: 'Mandi Prices',
+      market_directory: 'Market Directory',
+      farmers: 'Farmers',
+      traders: 'Traders',
+      auctions: 'Auctions',
+      commodities: 'Commodities',
+      transport: 'Transport',
+      schemes: 'Schemes & Services',
+      notices: 'Notices',
+      reports: 'Reports',
+      grievance: 'Grievance Portal',
+      help: 'Help Desk',
+      login: 'Sign In',
       register: 'Register',
-      logout: 'Logout'
-    },
-    hero: {
-      title_1: 'Whatever your real-world problem,',
-      title_2: 'MANDI will guide you to solution.',
-      subtitle: 'Need crop buyers, emergency hospital transport, pump repair, or livelihood — speak or type your problem in simple words.',
-      input_placeholder: 'e.g. "I have 50 quintals of wheat and need verified buyer and tractor transport..."',
-      recording: 'Listening... please speak',
-      voice_start: 'Speak Problem (Voice)',
-      submit_problem: 'Find Solution Path',
-      analyzing: 'MANDI Engine analyzing problem...',
-    },
-    passport: {
-      title: 'Problem Passport',
-      code: 'Passport Code',
-      solution_path: 'Solution Graph',
-      assigned_resources: 'Assigned Resources / Providers',
-      urgency: 'Urgency',
-      status: 'Status',
-      timeline: 'Execution Timeline',
-      confirm_resolution: 'Confirm Problem Resolved',
-      rate_assistance: 'Rate Assistance'
+      dashboard: 'Dashboard'
+    }
+  },
+  pa: {
+    brand_title: 'ਮੰਡੀ ਸੇਵਾ',
+    brand_sub: 'ਖੇਤੀਬਾੜੀ ਮੰਡੀ ਜਾਣਕਾਰੀ ਅਤੇ ਸੇਵਾਵਾਂ ਪੋਰਟਲ',
+    disclaimer: 'ਡੈਮੋ / ਪ੍ਰੋਟੋਟਾਈਪ - ਇਹ ਅਧਿਕਾਰਤ ਸਰਕਾਰੀ ਵੈੱਬਸਾਈਟ ਨਹੀਂ ਹੈ',
+    nav: {
+      home: 'ਮੁੱਖ ਪੰਨਾ',
+      mandi_prices: 'ਮੰਡੀ ਭਾਅ',
+      market_directory: 'ਮੰਡੀ ਡਾਇਰੈਕਟਰੀ',
+      farmers: 'ਕਿਸਾਨ ਪੋਰਟਲ',
+      traders: 'ਵਪਾਰੀ ਪੋਰਟਲ',
+      auctions: 'ਈ-ਨੀਲਾਮੀ',
+      commodities: 'ਫਸਲਾਂ',
+      transport: 'ਟਰਾਂਸਪੋਰਟ',
+      schemes: 'ਸਰਕਾਰੀ ਸਕੀਮਾਂ',
+      notices: 'ਨੋਟਿਸ ਬੋਰਡ',
+      reports: 'ਰਿਪੋਰਟਾਂ',
+      grievance: 'ਸ਼ਿਕਾਇਤ ਨਿਵਾਰਣ',
+      help: 'ਮਦਦ',
+      login: 'ਲੌਗਇਨ',
+      register: 'ਰਜਿਸਟਰ',
+      dashboard: 'ਡੈਸ਼ਬੋਰਡ'
     }
   }
 };
 
 export const LanguageProvider = ({ children }) => {
   const [lang, setLang] = useState(() => localStorage.getItem('mandi_lang') || 'hi');
+  const [fontSize, setFontSize] = useState(() => localStorage.getItem('mandi_fontsize') || 'normal');
+  const [highContrast, setHighContrast] = useState(() => localStorage.getItem('mandi_contrast') === 'true');
 
   useEffect(() => {
     localStorage.setItem('mandi_lang', lang);
   }, [lang]);
 
+  useEffect(() => {
+    localStorage.setItem('mandi_fontsize', fontSize);
+    if (typeof document !== 'undefined') {
+      if (fontSize === 'large') {
+        document.documentElement.style.fontSize = '18px';
+      } else if (fontSize === 'xlarge') {
+        document.documentElement.style.fontSize = '20px';
+      } else {
+        document.documentElement.style.fontSize = '16px';
+      }
+    }
+  }, [fontSize]);
+
+  useEffect(() => {
+    localStorage.setItem('mandi_contrast', highContrast);
+  }, [highContrast]);
+
   const toggleLanguage = () => {
-    setLang((prev) => (prev === 'hi' ? 'en' : 'hi'));
+    setLang((prev) => (prev === 'hi' ? 'en' : prev === 'en' ? 'pa' : 'hi'));
+  };
+
+  const toggleContrast = () => {
+    setHighContrast((prev) => !prev);
   };
 
   const currentTranslations = translations[lang] || translations.hi;
@@ -145,8 +127,21 @@ export const LanguageProvider = ({ children }) => {
   const t = Object.assign(tFunction, currentTranslations);
 
   return (
-    <LanguageContext.Provider value={{ lang, setLang, toggleLanguage, t }}>
-      {children}
+    <LanguageContext.Provider
+      value={{
+        lang,
+        setLang,
+        toggleLanguage,
+        fontSize,
+        setFontSize,
+        highContrast,
+        toggleContrast,
+        t
+      }}
+    >
+      <div className={`${fontSize === 'large' ? 'text-[1.05rem]' : fontSize === 'xlarge' ? 'text-[1.15rem]' : 'text-base'} ${highContrast ? 'bg-slate-950 text-yellow-300' : ''}`}>
+        {children}
+      </div>
     </LanguageContext.Provider>
   );
 };

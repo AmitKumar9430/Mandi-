@@ -20,10 +20,20 @@ import {
 } from 'lucide-react';
 
 export default function UserLogin() {
-  const { requestOtp, verifyOtp, login } = useUserAuth();
+  const { user, requestOtp, verifyOtp, login } = useUserAuth();
   const { lang, toggleLanguage } = useLanguage();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
+
+  const redirectTarget = searchParams.get('redirect') || '/user/dashboard';
+  const prefilledText = searchParams.get('text');
+
+  // Auto-redirect if already logged in
+  useEffect(() => {
+    if (user) {
+      navigate(redirectTarget, { replace: true });
+    }
+  }, [user, navigate, redirectTarget]);
 
   // Login mode: 'OTP' (default & primary) vs 'PASSWORD'
   const [loginMode, setLoginMode] = useState('OTP');
@@ -39,16 +49,17 @@ export default function UserLogin() {
   const [showPassword, setShowPassword] = useState(false);
 
   const [loading, setLoading] = useState(false);
-  const [errorMsg, setErrorMsg] = useState('');
+  const [errorMsg, setErrorMsg] = useState(
+    searchParams.get('redirect')
+      ? (lang === 'hi' ? 'कृपया इस सरकारी पोर्टल में प्रवेश करने के लिए पहले लॉगिन करें।' : 'Please sign in to access the requested portal.')
+      : ''
+  );
   const [successMsg, setSuccessMsg] = useState('');
   const [showQrModal, setShowQrModal] = useState(false);
 
   // 45-second Resend countdown timer
   const [countdown, setCountdown] = useState(0);
   const digitInputRefs = useRef([]);
-
-  const redirectTarget = searchParams.get('redirect') || '/user/dashboard';
-  const prefilledText = searchParams.get('text');
 
   useEffect(() => {
     let timer;

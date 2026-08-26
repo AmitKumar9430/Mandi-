@@ -429,17 +429,13 @@ public class DefaultOtpService implements OtpService {
             userOpt = userRepository.findByPhoneOrEmail(normIdentifier, normIdentifier);
         }
 
-        // Account Enumeration Protection: If account is not found, return safe generic response
         if (userOpt.isEmpty()) {
-            String fakeRequestId = "REQ_" + UUID.randomUUID().toString().replace("-", "").substring(0, 20);
-            log.info("ℹ️ [ACCOUNT ENUMERATION PROTECTION] OTP requested for non-existent identifier: {}", normIdentifier);
-            return new OtpRequestResponse(
-                    true,
-                    "If the account is eligible for verification, an OTP has been sent to the registered email and mobile.",
-                    fakeRequestId,
-                    "******0000",
-                    300
-            );
+            log.warn("⚠️ [LOGIN_OTP_FAILED] No account registered with identifier: {}", normIdentifier);
+            if (normIdentifier.contains("@")) {
+                throw new IllegalArgumentException("No account registered with email '" + normIdentifier + "'. Please click REGISTER to create your account.");
+            } else {
+                throw new IllegalArgumentException("No account registered with mobile number '" + normIdentifier + "'. Please click REGISTER to create your account.");
+            }
         }
 
         User user = userOpt.get();

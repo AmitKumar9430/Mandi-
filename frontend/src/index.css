@@ -4,48 +4,38 @@
 
 @layer base {
   body {
-    @apply bg-stone-50 text-stone-900;
-    font-family: 'Hind', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
-  }
-
-  /* Accessibility High Contrast Focus Rings */
-  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
-    @apply outline-none ring-4 ring-pine-500 ring-offset-2;
+    background-color: #F8FAFC;
+    color: #1E293B;
+    font-family: 'Inter', 'Noto Sans Devanagari', 'Noto Sans Gurmukhi', -apple-system, BlinkMacSystemFont, sans-serif;
+    -webkit-font-smoothing: antialiased;
   }
 }
 
-/* Natural Rural Hero Background - Clean Scenic Visibility without heavy color washes */
-.bg-rural-hero {
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.35), rgba(15, 23, 42, 0.70)), url('/rural_village_landscape.jpg');
-  background-size: cover;
-  background-position: center 30%;
-}
-
-.bg-rural-card {
-  background-image: radial-gradient(circle at 100% 100%, rgba(45, 122, 88, 0.1) 0%, transparent 60%);
-}
-
-.bg-kisan-banner {
-  background-image: linear-gradient(135deg, rgba(20, 61, 44, 0.94), rgba(10, 29, 22, 0.96)), url('/rural_village_landscape.jpg');
-  background-size: cover;
-  background-position: center;
-}
-
-/* Custom scrollbars */
+/* Custom Scrollbar for india.gov.in style */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #f0f7f3;
+  background: #F1F5F9;
 }
 ::-webkit-scrollbar-thumb {
-  background: #2d7a58;
-  border-radius: 9999px;
+  background: #94A3B8;
+  border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #1c4f39;
+  background: #DC2626;
+}
+
+/* Focused elements ring */
+*:focus-visible {
+  outline: 2px solid #DC2626 !important;
+  outline-offset: 1px !important;
+}
+
+/* Smooth transitions */
+.transition-gov {
+  transition: all 0.15s ease-in-out;
 }
 
 /* Leaflet map custom height fix */

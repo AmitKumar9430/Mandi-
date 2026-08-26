@@ -413,15 +413,15 @@ export default function CitizenResidentDashboard() {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 whitespace-nowrap ${
+              className={`px-3 py-1.5 rounded-2xs text-xs font-bold transition flex items-center space-x-1.5 whitespace-nowrap ${
                 activeTab === tab.id
-                  ? 'bg-gradient-to-r from-emerald-600 to-pine-700 text-white shadow border border-emerald-400/50'
-                  : 'bg-stone-900/80 text-stone-300 hover:bg-stone-800 hover:text-white border border-stone-800'
+                  ? 'bg-[#0A3663] text-white shadow-2xs border border-[#0A3663]'
+                  : 'bg-white text-slate-700 hover:bg-slate-100 hover:text-slate-900 border border-slate-300'
               }`}
             >
               <span>{lang === 'hi' ? tab.labelHi : tab.labelEn}</span>
               {tab.count !== undefined && (
-                <span className="bg-stone-950 text-emerald-300 text-[10px] font-mono px-1.5 py-0.5 rounded-md border border-emerald-500/30">
+                <span className="bg-slate-100 text-[#0A3663] text-[10px] font-mono px-1.5 py-0.5 rounded-2xs border border-slate-200">
                   {tab.count}
                 </span>
               )}
@@ -438,7 +438,7 @@ export default function CitizenResidentDashboard() {
         {activeTab === 'marketplace' && (
           <div className="space-y-8">
             {/* Top Bar: Category Filter & Bulk Purchase Option */}
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-stone-950 p-4 rounded-3xl border border-stone-800">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-white p-4 rounded-md border border-slate-200 shadow-xs">
               {/* Category Pills (Feature 8) */}
               <div className="flex items-center space-x-2 overflow-x-auto w-full sm:w-auto">
                 {[
@@ -451,10 +451,10 @@ export default function CitizenResidentDashboard() {
                   <button
                     key={c.id}
                     onClick={() => setSelectedCategory(c.id)}
-                    className={`px-3 py-1.5 rounded-xl text-xs font-bold transition whitespace-nowrap ${
+                    className={`px-3 py-1.5 rounded-2xs text-xs font-bold transition whitespace-nowrap ${
                       selectedCategory === c.id
-                        ? 'bg-emerald-600 text-white font-black shadow'
-                        : 'bg-stone-900 text-stone-300 hover:text-white border border-stone-800'
+                        ? 'bg-[#0A3663] text-white font-bold shadow-2xs'
+                        : 'bg-slate-50 text-slate-700 hover:text-slate-900 border border-slate-200'
                     }`}
                   >
                     {c.label}
@@ -465,7 +465,7 @@ export default function CitizenResidentDashboard() {
               {/* Feature 5: Bulk Order Button */}
               <button
                 onClick={() => setShowBulkOrderModal(true)}
-                className="py-2 px-4 bg-amber-500 hover:bg-amber-400 text-stone-950 font-black rounded-xl text-xs shadow-md transition flex items-center space-x-1.5 flex-shrink-0"
+                className="py-2 px-4 bg-[#DC2626] hover:bg-[#B91C1C] text-white font-bold rounded-2xs text-xs shadow-2xs transition flex items-center space-x-1.5 flex-shrink-0"
               >
                 <Package className="w-4 h-4" />
                 <span>{lang === 'hi' ? '📦 थोक खरीद अनुरोध (Bulk Order)' : '📦 Bulk Purchase Tender'}</span>
@@ -473,43 +473,43 @@ export default function CitizenResidentDashboard() {
             </div>
 
             {/* Feature 3: Price Comparison Matrix (Save vs Retail) */}
-            <div className="bg-stone-950 rounded-3xl p-6 border-2 border-stone-800 shadow-xl space-y-4">
-              <div className="flex items-center justify-between border-b border-stone-800 pb-3">
+            <div className="bg-white rounded-md p-6 border border-slate-200 shadow-xs space-y-4">
+              <div className="flex items-center justify-between border-b border-slate-200 pb-3">
                 <div className="flex items-center space-x-2">
-                  <TrendingUp className="w-5 h-5 text-emerald-400" />
+                  <TrendingUp className="w-5 h-5 text-[#0A3663]" />
                   <div>
-                    <h3 className="font-black text-white text-base">
+                    <h3 className="font-extrabold text-[#0A3663] text-base font-serif">
                       {lang === 'hi' ? '📊 मूल्य तुलना — किसान से सीधी खरीद पर बचत (Price Comparison)' : '📊 Price Comparison & Savings'}
                     </h3>
-                    <p className="text-[11px] text-stone-400">
+                    <p className="text-xs text-slate-600">
                       {lang === 'hi' ? 'मंडी प्लेटफॉर्म पर बिचौलियों के बिना सीधे खेत से खरीदकर 25% - 40% तक बचत करें' : 'Buy direct from farm gate without middlemen margin'}
                     </p>
                   </div>
                 </div>
-                <span className="bg-emerald-950 text-emerald-400 text-[10px] font-black px-2.5 py-1 rounded-full border border-emerald-500/40">
+                <span className="bg-emerald-100 text-emerald-900 text-[10px] font-bold px-2.5 py-1 rounded-2xs border border-emerald-300">
                   ⚡ Zero Commission
                 </span>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 {priceComparison.map((p, idx) => (
-                  <div key={idx} className="p-3.5 rounded-2xl bg-stone-900 border border-stone-800 space-y-2">
+                  <div key={idx} className="p-3.5 rounded-2xs bg-slate-50 border border-slate-200 space-y-2">
                     <div className="flex items-center justify-between">
-                      <span className="font-black text-white text-xs">{p.item}</span>
-                      <span className="text-[10px] font-black bg-emerald-950 text-emerald-400 px-1.5 py-0.5 rounded">
+                      <span className="font-bold text-[#0A3663] text-xs">{p.item}</span>
+                      <span className="text-[10px] font-bold bg-emerald-100 text-emerald-900 px-1.5 py-0.5 rounded">
                         {p.savings}
                       </span>
                     </div>
                     <div className="space-y-1 text-[11px]">
-                      <div className="flex justify-between text-emerald-400 font-bold">
+                      <div className="flex justify-between text-emerald-800 font-bold">
                         <span>MANDI Direct:</span>
                         <span className="font-mono">{p.directPrice}</span>
                       </div>
-                      <div className="flex justify-between text-stone-300">
+                      <div className="flex justify-between text-slate-700">
                         <span>APMC Yard:</span>
                         <span className="font-mono">{p.mandiApmc}</span>
                       </div>
-                      <div className="flex justify-between text-stone-300 line-through">
+                      <div className="flex justify-between text-slate-500 line-through">
                         <span>City Retail Store:</span>
                         <span className="font-mono">{p.retailStore}</span>
                       </div>
@@ -520,15 +520,15 @@ export default function CitizenResidentDashboard() {
             </div>
 
             {/* Features 1, 2, 4: Direct Farmer Produce Listings */}
-            <div className="bg-stone-950 rounded-3xl p-6 border-2 border-stone-800 shadow-xl space-y-4">
-              <div className="flex items-center justify-between border-b border-stone-800 pb-3">
+            <div className="bg-white rounded-md p-6 border border-slate-200 shadow-xs space-y-4">
+              <div className="flex items-center justify-between border-b border-slate-200 pb-3">
                 <div className="flex items-center space-x-2">
-                  <ShoppingBag className="w-5 h-5 text-emerald-400" />
+                  <ShoppingBag className="w-5 h-5 text-[#0A3663]" />
                   <div>
-                    <h3 className="font-black text-white text-base">
+                    <h3 className="font-extrabold text-[#0A3663] text-base font-serif">
                       {lang === 'hi' ? '🌾 नजदीकी किसानों की ताज़ा फसलें (Fresh Crops From Farmers)' : '🌾 Fresh Crops From Nearby Farmers'}
                     </h3>
-                    <p className="text-[11px] text-stone-400">
+                    <p className="text-xs text-slate-600">
                       Within {distanceRadius}km of your location • Verified farm-fresh produce
                     </p>
                   </div>
@@ -536,53 +536,53 @@ export default function CitizenResidentDashboard() {
               </div>
 
               {crops.length === 0 ? (
-                <div className="py-12 text-center text-stone-400 text-xs">
+                <div className="py-12 text-center text-slate-600 text-xs">
                   Loading farm fresh listings...
                 </div>
               ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                   {crops.map((c) => (
-                    <div key={c.id} className="p-4 bg-stone-900 rounded-2xl border border-stone-800 hover:border-emerald-500/50 transition space-y-3 flex flex-col justify-between">
+                    <div key={c.id} className="p-4 bg-slate-50 rounded-2xs border border-slate-200 hover:border-[#0A3663] transition space-y-3 flex flex-col justify-between">
                       <div className="space-y-2">
                         <div className="flex items-start justify-between">
                           <div>
-                            <h4 className="font-black text-white text-sm">{c.cropName}</h4>
-                            <span className="text-[11px] text-stone-300 font-mono">Variety: {c.variety}</span>
+                            <h4 className="font-extrabold text-[#0A3663] text-sm">{c.cropName}</h4>
+                            <span className="text-[11px] text-slate-600 font-mono">Variety: {c.variety}</span>
                           </div>
-                          <span className="bg-emerald-950 text-emerald-400 text-[10px] font-black px-2 py-0.5 rounded border border-emerald-500/30">
+                          <span className="bg-emerald-100 text-emerald-900 text-[10px] font-bold px-2 py-0.5 rounded-2xs border border-emerald-300">
                             {c.qualityGrade || 'Grade A'}
                           </span>
                         </div>
 
-                        <div className="grid grid-cols-2 gap-2 bg-stone-950 p-2.5 rounded-xl border border-stone-800 text-xs font-mono">
+                        <div className="grid grid-cols-2 gap-2 bg-white p-2.5 rounded-2xs border border-slate-200 text-xs font-mono">
                           <div>
-                            <span className="text-[10px] text-stone-300 block">Available:</span>
-                            <span className="font-bold text-white">{c.quantityQuintals} Quintals</span>
+                            <span className="text-[10px] text-slate-500 block">Available:</span>
+                            <span className="font-bold text-slate-900">{c.quantityQuintals} Quintals</span>
                           </div>
                           <div>
-                            <span className="text-[10px] text-stone-300 block">Direct Farm Rate:</span>
-                            <span className="font-black text-emerald-400">₹{c.expectedPricePerQuintal} /Qtl</span>
+                            <span className="text-[10px] text-slate-500 block">Direct Farm Rate:</span>
+                            <span className="font-bold text-[#DC2626]">₹{c.expectedPricePerQuintal} /Qtl</span>
                           </div>
                         </div>
 
-                        <p className="text-[11px] text-stone-400 line-clamp-2">
+                        <p className="text-xs text-slate-600 line-clamp-2">
                           {c.description || 'Farm-fresh quality produce ready for delivery or pickup.'}
                         </p>
 
-                        <div className="flex items-center justify-between text-[11px] text-stone-300 pt-1">
+                        <div className="flex items-center justify-between text-xs text-slate-700 pt-1">
                           <span>📍 {c.villageOrTown || 'Gharuan'}, {c.district || 'Mohali'}</span>
-                          <span className="font-mono text-emerald-400 font-bold">~3.5 km</span>
+                          <span className="font-mono text-emerald-800 font-bold">~3.5 km</span>
                         </div>
                       </div>
 
                       {/* Feature 4: Place Order & Feature 18: Contact Farmer */}
-                      <div className="flex items-center space-x-2 pt-2 border-t border-stone-800">
+                      <div className="flex items-center space-x-2 pt-2 border-t border-slate-200">
                         <button
                           onClick={() => {
                             setSelectedCropToBuy(c);
                             setShowBuyModal(true);
                           }}
-                          className="flex-1 py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs rounded-xl shadow transition flex items-center justify-center space-x-1.5"
+                          className="flex-1 py-2 bg-[#DC2626] hover:bg-[#B91C1C] text-white font-bold text-xs rounded-2xs shadow-2xs transition flex items-center justify-center space-x-1.5"
                         >
                           <ShoppingBag className="w-3.5 h-3.5" />
                           <span>{lang === 'hi' ? '🛒 सीधे खरीदें (Buy)' : '🛒 Buy Direct'}</span>
@@ -592,7 +592,7 @@ export default function CitizenResidentDashboard() {
                             setChatRecipient(`Farmer: ${c.cropName}`);
                             setShowChatModal(true);
                           }}
-                          className="p-2 bg-stone-800 hover:bg-stone-700 text-amber-300 rounded-xl border border-stone-700 transition"
+                          className="p-2 bg-white hover:bg-slate-100 text-[#0A3663] rounded-2xs border border-slate-300 transition"
                           title="Chat with Farmer"
                         >
                           <MessageSquare className="w-4 h-4" />

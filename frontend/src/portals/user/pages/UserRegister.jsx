@@ -55,9 +55,16 @@ const USER_ROLES = [
 ];
 
 export default function UserRegister() {
-  const { requestRegisterOtp, verifyRegisterOtp } = useUserAuth();
+  const { user, requestRegisterOtp, verifyRegisterOtp } = useUserAuth();
   const { lang, toggleLanguage } = useLanguage();
   const navigate = useNavigate();
+
+  // Auto-redirect if already logged in
+  useEffect(() => {
+    if (user) {
+      navigate('/user/dashboard', { replace: true });
+    }
+  }, [user, navigate]);
 
   // Registration step: 'FORM' (fill personal data) vs 'VERIFY' (enter 6-digit EmailJS OTP)
   const [step, setStep] = useState('FORM');

@@ -29,6 +29,16 @@ import UserMitraHub from './portals/user/pages/UserMitraHub';
 import UserUnauthorized from './portals/user/pages/UserUnauthorized';
 import UserNotFound from './portals/user/pages/UserNotFound';
 
+// Mandi Sewa e-Governance Pages
+import MandiPricesPage from './portals/user/pages/MandiPricesPage';
+import MarketDirectoryPage from './portals/user/pages/MarketDirectoryPage';
+import AuctionsPage from './portals/user/pages/AuctionsPage';
+import GovernmentSchemesPage from './portals/user/pages/GovernmentSchemesPage';
+import NoticesBoardPage from './portals/user/pages/NoticesBoardPage';
+import GrievancePortalPage from './portals/user/pages/GrievancePortalPage';
+import ReportsPage from './portals/user/pages/ReportsPage';
+import TraderDashboard from './portals/user/pages/TraderDashboard';
+
 // Admin Portal Pages
 import AdminLogin from './portals/admin/pages/AdminLogin';
 import AdminDashboard from './portals/admin/pages/AdminDashboard';
@@ -77,9 +87,32 @@ export default function App() {
       {/* ========================================================================= */}
       {/* 1. ROOT & USER PORTAL ROUTES (Strict Namespace: /user/* & Root /)         */}
       {/* ========================================================================= */}
-      {/* Root Entry Point: Public Home with Bolo Assistant and Category Hub */}
+      {/* Root Entry Point: Public e-Governance Home & Dedicated Pages */}
       <Route path="/" element={<UserLayout />}>
         <Route index element={<UserHome />} />
+        <Route path="mandi-prices" element={<MandiPricesPage />} />
+        <Route path="market-directory" element={<MarketDirectoryPage />} />
+        <Route path="auctions" element={<AuctionsPage />} />
+        <Route path="gov-schemes" element={<GovernmentSchemesPage />} />
+        <Route path="notices" element={<NoticesBoardPage />} />
+        <Route path="grievance" element={<GrievancePortalPage />} />
+        <Route path="reports" element={<ReportsPage />} />
+        <Route
+          path="trader-dashboard"
+          element={
+            <ProtectedUserRoute>
+              <TraderDashboard />
+            </ProtectedUserRoute>
+          }
+        />
+        <Route
+          path="farmer-dashboard"
+          element={
+            <ProtectedUserRoute>
+              <Navigate to="/user/agriculture" replace />
+            </ProtectedUserRoute>
+          }
+        />
       </Route>
       <Route path="/home" element={<Navigate to="/" replace />} />
 
