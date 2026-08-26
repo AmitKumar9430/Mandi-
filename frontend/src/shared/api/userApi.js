@@ -18,7 +18,11 @@ const userClient = axios.create({
 });
 
 userClient.interceptors.request.use((config) => {
-  const token = localStorage.getItem('mandi_user_token') || localStorage.getItem('token') || localStorage.getItem('mandi_token');
+  const token =
+    localStorage.getItem('mandi_user_token') ||
+    localStorage.getItem('mandi_admin_token') ||
+    localStorage.getItem('mandi_token') ||
+    localStorage.getItem('token');
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
@@ -28,9 +32,11 @@ userClient.interceptors.request.use((config) => {
 userClient.interceptors.response.use(
   (res) => res.data,
   (err) => {
-    if (err.response?.status === 401) {
+    if (err.response?.status === 401 || err.response?.status === 403) {
       localStorage.removeItem('mandi_user_token');
       localStorage.removeItem('mandi_user_profile');
+      const msg = err.response?.data?.message || 'Access Denied / Session Expired: Please log in with a valid account to perform this action.';
+      return Promise.reject(new Error(msg));
     }
     const msg = err.response?.data?.message || err.message || 'Network request failed';
     return Promise.reject(new Error(msg));
