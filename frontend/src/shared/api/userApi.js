@@ -33,8 +33,12 @@ userClient.interceptors.response.use(
   (res) => res.data,
   (err) => {
     if (err.response?.status === 401 || err.response?.status === 403) {
+      localStorage.removeItem('mandi_token');
       localStorage.removeItem('mandi_user_token');
+      localStorage.removeItem('mandi_admin_token');
+      localStorage.removeItem('mandi_user');
       localStorage.removeItem('mandi_user_profile');
+      localStorage.removeItem('mandi_admin_profile');
       const msg = err.response?.data?.message || 'Access Denied / Session Expired: Please log in with a valid account to perform this action.';
       return Promise.reject(new Error(msg));
     }

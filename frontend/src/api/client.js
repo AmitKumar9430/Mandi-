@@ -37,9 +37,13 @@ api.interceptors.response.use(
   (response) => response.data,
   (error) => {
     if (error.response?.status === 401 || error.response?.status === 403) {
-      // Clear stale token if unauthorized
+      // Clear all stale tokens & profiles if unauthorized
       localStorage.removeItem('mandi_token');
+      localStorage.removeItem('mandi_user_token');
+      localStorage.removeItem('mandi_admin_token');
       localStorage.removeItem('mandi_user');
+      localStorage.removeItem('mandi_user_profile');
+      localStorage.removeItem('mandi_admin_profile');
     }
     const message =
       error.response?.data?.message ||
